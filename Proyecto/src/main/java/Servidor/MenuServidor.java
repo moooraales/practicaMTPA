@@ -45,47 +45,46 @@ public void menuOpcion(String opc){
     ArrayList<Usuario> alUsuario;
         switch(opc){
             case "1":
-                System.out.println("--Usuarios registrados--");
+                System.out.println("LISTA DE USUARIOS REGISTRADOS: ");
                 alUsuario = Usuario.getListaUsuarios();
                 mostrarUsuarios(alUsuario);
                 break;
             case "2":
-                System.out.println("--Usuarios conectados--");
+                System.out.println("LISTA DE USUARIOS CONECTADOS: ");
                 alUsuario = Cliente.listarUsuariosLogueados();
-                imprimirUsuarios(alUsuario);
+                mostrarUsuarios(alUsuario);
                 break;
             case "3":
-                System.out.println("--Ver retos--");
+                System.out.println("LISTA DE RETOS ACTIVOS: ");
                 imprimirRetos();
                 break;
             case "4":
-                System.out.println("--Ver salas en curso--");
+                System.out.println("LISTA DE SALAS ACTIVAS: ");
                 imprimirSalas();
                 break;
             case "5":
-                System.out.println("--Ranking--");
+                System.out.println("RANKING DE USUARIOS: ");
                 alUsuario = Ranking.getRanking().getUsuarios();
                 mostrarUsuarios(alUsuario);
                 break;
             case "6":
-                System.out.println("--Cargar usuarios--");
-                UsuarioDB.cargarUsuarios();
+                System.out.println("CARGANDO USUARIOS...");
+                UsuarioDatosPersistentes.cargarUsuarios();
                 break;
             case "7":
-                System.out.println("--Guardar usuarios--");
-                UsuarioDB.guardarUsuarios();
+                System.out.println("GUARDANDO USUARIOS...");
+                UsuarioDatosPersistentes.guardarUsuarios();
                 break;
             case "8":
-                System.out.println("--Iniciar servicio--");
+                System.out.println("INICIANDO SERVIDOR...");
                 PrincipalServidor.arrancado = true;
                 break;
             case "9":
-                System.out.println("--Servicio en Modo mantenimiento--");
-                System.out.println("--No se aceptarán clientes nuevos--");
+                System.out.println("SERVIDOR PAUSADO...");
                 PrincipalServidor.arrancado = false;
                 break;
             case "10":
-                System.out.println("--Detener servicio--");
+                System.out.println("SERVIDOR DETENIDO");
                 PrincipalServidor.arrancado = false;
                 detenerEjecucion();
                 break;
@@ -126,4 +125,47 @@ public void detenerEjecucion(){
     }
 }
 
+//Metodo que muestra los retos que se encuentran activos actualmente en el servidor
+public void imprimirRetos(){
+    ArrayList<Reto> lista = Reto.listarRetosActivos();
+    if(lista.isEmpty()){
+        System.out.println("--------------");
+        System.out.println("No hay registros");
+    }else{
+        for(int i=0;i<lista.size();i++){
+            System.out.println("--------------");
+            System.out.print("Retador: ");
+            System.out.println(lista.get(i).getLocal().getNombre());
+            System.out.print("Retado: ");
+            System.out.println(lista.get(i).getVisitante().getNombre());
+            System.out.print("Estado partida: ");
+            System.out.println(lista.get(i).getEstado());
+        }
+    }
+}
+
+//Metodo que muestra los datos de las salas de partida que se encuentran activas
+public void imprimirSalas(){
+    ArrayList<Reto> lista = Reto.listarRetosActivos();
+    Sala sala;
+    if(lista.isEmpty()){
+        System.out.println("--------------");
+        System.out.println("No hay registros");
+    }else{
+        for(int i=0;i<lista.size();i++){
+            sala = lista.get(i).getSala();
+            System.out.println("--------------");
+            System.out.print("Local: ");
+            System.out.print(lista.get(i).getLocal().getNombre());
+            System.out.print("(");
+            System.out.print(sala.getPuntosLocal());
+            System.out.println(")");
+            System.out.print("Visitante: ");
+            System.out.print(lista.get(i).getVisitante().getNombre());
+            System.out.print("(");
+            System.out.print(sala.getPuntosVisitante());
+            System.out.println(")");
+        }
+    }
+}
 }
