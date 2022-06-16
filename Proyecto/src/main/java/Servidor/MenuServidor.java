@@ -102,13 +102,13 @@ public void menuOpcion(String opc){
 public void mostrarUsuarios(ArrayList<Usuario> lista){
     if(lista.isEmpty()){
         System.out.println("--------------");
-        System.out.println("No hay registros");
+        System.out.println("No se encuentran usuarios, lista vacia");
     }else{
         for(int i=0;i<lista.size();i++){
             System.out.println("--------------");
             System.out.print("Usuario: ");
             System.out.println(lista.get(i).getNombre());
-            System.out.print("Puntos: ");
+            System.out.print("Partidas ganadas: ");
             System.out.println(lista.get(i).getPartidasGanadas());
         }
     }
