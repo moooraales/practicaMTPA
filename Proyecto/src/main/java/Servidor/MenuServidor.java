@@ -25,23 +25,23 @@ public class MenuServidor extends Thread{
 //Metodo que imprime el menu y lo muestra por pantalla
 public void imprimirMenu(){
     System.out.println("--LISTA DE OPCIONES--");
-    System.out.println("1) Ver lista de usuarios registrados");
-    System.out.println("2) Ver lista de usuarios conectados");
-    System.out.println("3) Ver retos");
-    System.out.println("4) Ver salas en curso");
-    System.out.println("5) Ver ranking");
-    System.out.println("6) Cargar DB");
-    System.out.println("7) Guardar en DB");
-    System.out.println("8) Iniciar servicio");
-    System.out.println("9) Poner servicio en modo Mantenimiento");
-    System.out.println("10) Detener servicio");
-    System.out.println("0) Salir");
-    System.out.print("Selecciona una opcion: ");
+    System.out.println("1 - MOSTRAR LISTA USUARIOS");
+    System.out.println("2 - MOSTRAR USUARIOS CONECTADOS");
+    System.out.println("3 - MOSTRAR RETOS");
+    System.out.println("4 - MOSTRAR PARTIDAS EN CURSO");
+    System.out.println("5 - MOSTRAR RANKING DE USUARIOS");
+    System.out.println("6 - CARGAR DATOS DE USUARIOS");
+    System.out.println("7 - GUARDAR DATOS DE USUARIOS");
+    System.out.println("8 - ARRANCAR EL SERVIDOR");
+    System.out.println("9 - PAUSAR EL SERVIDOR");
+    System.out.println("10 - DETENER EL SERVIDOR");
+    System.out.println("0 - SALIR");
+    System.out.print("ELIJA UNA OPCION: ");
 }
 
 //Ejecutamos la opcion que se seleccione
 public void menuOpcion(String opc){
-    System.out.println("Menu Servidor");
+    System.out.println("MENU SERVIDOR");
     ArrayList<Usuario> alUsuario;
         switch(opc){
             case "1":
