@@ -27,7 +27,7 @@ public class EsperadorJuego extends Thread{
                     String estado = usuarios[i+1];
                     if(rival.equals(uRival)){
                         if(estado.equals("Aceptado")){
-                            EventQueue.invokeLater(new Cliente.Interfaces.MenuJuego());
+                            EventQueue.invokeLater(new Cliente.Interfaces.Juego.Conecta4(8,8));
                             espera = false;
                         }else if(estado.equals("Pendiente")){
                             espera = true;

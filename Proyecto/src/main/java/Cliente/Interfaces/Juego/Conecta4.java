@@ -1,7 +1,7 @@
 package Cliente.Interfaces.Juego;
 
 enum Casilla {LIBRE,JUGADOR1,JUGADOR2};
-public class Conecta4 {
+public class Conecta4 implements Runnable {
 
 
         
@@ -13,10 +13,10 @@ public class Conecta4 {
 
     /**
      * Construye un tablero con el n�mero de filas y columnas indicado
-     * @param numCol n�mero de columnas
-     * @param numFil n�mero de filas
+     * @param filas
+     * @param columnas
      */
-    public Conecta4(int numCol, int numFil) {
+    public Conecta4(int columnas, int filas) {
         this.numFil = numFil;
         this.numCol = numCol;
         this.jugador=1;
@@ -245,6 +245,12 @@ public class Conecta4 {
     {
     
     	tablero[filas][columnas]=Casilla.LIBRE;
+    }
+
+    @Override
+    public void run() {
+        // TODO Auto-generated method stub
+        
     }
     
             
