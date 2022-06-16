@@ -66,7 +66,7 @@ public void menuOpcion(String opc){
             case "5":
                 System.out.println("--Ranking--");
                 alUsuario = Ranking.getRanking().getUsuarios();
-                imprimirUsuarios(alUsuario);
+                mostrarUsuarios(alUsuario);
                 break;
             case "6":
                 System.out.println("--Cargar usuarios--");
@@ -93,7 +93,7 @@ public void menuOpcion(String opc){
             case "11":
                 System.out.println("--Detener servicio--");
                 PrincipalServidor.arrancado = false;
-                detenerServicio();
+                detenerEjecucion();
                 break;
             case "0":
                 System.exit(0);
@@ -102,6 +102,34 @@ public void menuOpcion(String opc){
                 System.out.println("--Opcion no valida--");
                 break;
         }
+}
+
+//Muestra los usuarios del sistema
+public void mostrarUsuarios(ArrayList<Usuario> lista){
+    if(lista.isEmpty()){
+        System.out.println("--------------");
+        System.out.println("No hay registros");
+    }else{
+        for(int i=0;i<lista.size();i++){
+            System.out.println("--------------");
+            System.out.print("Usuario: ");
+            System.out.println(lista.get(i).getNombre());
+            System.out.print("Puntos: ");
+            System.out.println(lista.get(i).getPartidasGanadas());
+        }
+    }
+}
+
+//Detiene la ejecución del servidor
+public void detenerEjecucion(){
+    ArrayList<Cliente> alCliente = Cliente.getListaClientesActivos();
+    for(int i=0;i<alCliente.size();i++){
+        try {
+            alCliente.get(i).desconectar();
+        } catch (IOException ex) {
+            System.out.println("LOG: "+new GeneralError().toString()+":"+ex.getMessage());
+        }
+    }
 }
 
 }
