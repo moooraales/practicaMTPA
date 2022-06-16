@@ -24,7 +24,7 @@ public class MenuServidor extends Thread{
 
 //Metodo que imprime el menu y lo muestra por pantalla
 public void imprimirMenu(){
-    System.out.println("-----MENU-----");
+    System.out.println("--LISTA DE OPCIONES--");
     System.out.println("1) Ver lista de usuarios registrados");
     System.out.println("2) Ver lista de usuarios conectados");
     System.out.println("3) Ver retos");
@@ -32,10 +32,9 @@ public void imprimirMenu(){
     System.out.println("5) Ver ranking");
     System.out.println("6) Cargar DB");
     System.out.println("7) Guardar en DB");
-    System.out.println("8) Activar/Desactivar Coronavirus");
-    System.out.println("9) Iniciar servicio");
-    System.out.println("10) Poner servicio en modo Mantenimiento");
-    System.out.println("11) Detener servicio");
+    System.out.println("8) Iniciar servicio");
+    System.out.println("9) Poner servicio en modo Mantenimiento");
+    System.out.println("10) Detener servicio");
     System.out.println("0) Salir");
     System.out.print("Selecciona una opcion: ");
 }
@@ -48,7 +47,7 @@ public void menuOpcion(String opc){
             case "1":
                 System.out.println("--Usuarios registrados--");
                 alUsuario = Usuario.getListaUsuarios();
-                imprimirUsuarios(alUsuario);
+                mostrarUsuarios(alUsuario);
                 break;
             case "2":
                 System.out.println("--Usuarios conectados--");
@@ -77,20 +76,15 @@ public void menuOpcion(String opc){
                 UsuarioDB.guardarUsuarios();
                 break;
             case "8":
-                System.out.println("--Activar/Desactivar Coronavirus--");
-                toggleCovid();
-                imprimeEstadoCovid();
-                break;
-            case "9":
                 System.out.println("--Iniciar servicio--");
                 PrincipalServidor.arrancado = true;
                 break;
-            case "10":
+            case "9":
                 System.out.println("--Servicio en Modo mantenimiento--");
                 System.out.println("--No se aceptarán clientes nuevos--");
                 PrincipalServidor.arrancado = false;
                 break;
-            case "11":
+            case "10":
                 System.out.println("--Detener servicio--");
                 PrincipalServidor.arrancado = false;
                 detenerEjecucion();
@@ -99,7 +93,7 @@ public void menuOpcion(String opc){
                 System.exit(0);
                 break;
             default:
-                System.out.println("--Opcion no valida--");
+                System.out.println("--ELIJA UNA OPCION VALIDA--");
                 break;
         }
 }
