@@ -35,7 +35,7 @@ public class UsuarioDatosPersistentes {
                     s.close();
                 ok = true;
             } catch (Exception ex2) {
-                System.err.print("ERROR: "+ex2+" Cerrado de fichero");
+                System.err.print("ERROR: "+ex2+" NO SE CARGARON LOS USUARIOS");
                 ok = false;
             }
         }
