@@ -8,7 +8,7 @@ public class PrincipalServidor {
     public static void main(String[] args) throws Exception{
         ServerSocket server = new ServerSocket(2048);
         System.out.println("Servidor iniciado.");
-        UsuarioDB.cargarUsuarios();
+        UsuarioDatosPersistentes.cargarUsuarios();
         MenuServidor mS = new MenuServidor();
         OperacionesRecurrentes oR = new OperacionesRecurrentes();
         while(true){
