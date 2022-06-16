@@ -8,7 +8,7 @@ public class Servidor{
     private final Socket socket;
     
     private Servidor() throws IOException{
-        socket = new Socket("localhost",666);
+        socket = new Socket("localhost",2048);
     }
     public static Servidor getServidor() throws IOException{
         if(servidorUnico==null){
