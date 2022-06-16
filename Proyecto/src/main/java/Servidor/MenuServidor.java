@@ -126,4 +126,47 @@ public void detenerEjecucion(){
     }
 }
 
+//Metodo que muestra los retos que se encuentran activos actualmente en el servidor
+public void imprimirRetos(){
+    ArrayList<Reto> lista = Reto.listarRetosActivos();
+    if(lista.isEmpty()){
+        System.out.println("--------------");
+        System.out.println("No hay registros");
+    }else{
+        for(int i=0;i<lista.size();i++){
+            System.out.println("--------------");
+            System.out.print("Retador: ");
+            System.out.println(lista.get(i).getLocal().getNombre());
+            System.out.print("Retado: ");
+            System.out.println(lista.get(i).getVisitante().getNombre());
+            System.out.print("Estado partida: ");
+            System.out.println(lista.get(i).getEstado());
+        }
+    }
+}
+
+//Metodo que muestra los datos de las salas de partida que se encuentran activas
+public void imprimirSalas(){
+    ArrayList<Reto> lista = Reto.listarRetosActivos();
+    Sala sala;
+    if(lista.isEmpty()){
+        System.out.println("--------------");
+        System.out.println("No hay registros");
+    }else{
+        for(int i=0;i<lista.size();i++){
+            sala = lista.get(i).getSala();
+            System.out.println("--------------");
+            System.out.print("Local: ");
+            System.out.print(lista.get(i).getLocal().getNombre());
+            System.out.print("(");
+            System.out.print(sala.getPuntosLocal());
+            System.out.println(")");
+            System.out.print("Visitante: ");
+            System.out.print(lista.get(i).getVisitante().getNombre());
+            System.out.print("(");
+            System.out.print(sala.getPuntosVisitante());
+            System.out.println(")");
+        }
+    }
+}
 }
