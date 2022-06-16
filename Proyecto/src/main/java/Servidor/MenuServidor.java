@@ -45,47 +45,46 @@ public void menuOpcion(String opc){
     ArrayList<Usuario> alUsuario;
         switch(opc){
             case "1":
-                System.out.println("--Usuarios registrados--");
+                System.out.println("LISTA DE USUARIOS REGISTRADOS: ");
                 alUsuario = Usuario.getListaUsuarios();
                 mostrarUsuarios(alUsuario);
                 break;
             case "2":
-                System.out.println("--Usuarios conectados--");
+                System.out.println("LISTA DE USUARIOS CONECTADOS: ");
                 alUsuario = Cliente.listarUsuariosLogueados();
                 mostrarUsuarios(alUsuario);
                 break;
             case "3":
-                System.out.println("--Ver retos--");
+                System.out.println("LISTA DE RETOS ACTIVOS: ");
                 imprimirRetos();
                 break;
             case "4":
-                System.out.println("--Ver salas en curso--");
+                System.out.println("LISTA DE SALAS ACTIVAS: ");
                 imprimirSalas();
                 break;
             case "5":
-                System.out.println("--Ranking--");
+                System.out.println("RANKING DE USUARIOS: ");
                 alUsuario = Ranking.getRanking().getUsuarios();
                 mostrarUsuarios(alUsuario);
                 break;
             case "6":
-                System.out.println("--Cargar usuarios--");
+                System.out.println("CARGANDO USUARIOS...");
                 UsuarioDatosPersistentes.cargarUsuarios();
                 break;
             case "7":
-                System.out.println("--Guardar usuarios--");
+                System.out.println("GUARDANDO USUARIOS...");
                 UsuarioDatosPersistentes.guardarUsuarios();
                 break;
             case "8":
-                System.out.println("--Iniciar servicio--");
+                System.out.println("INICIANDO SERVIDOR...");
                 PrincipalServidor.arrancado = true;
                 break;
             case "9":
-                System.out.println("--Servicio en Modo mantenimiento--");
-                System.out.println("--No se aceptarán clientes nuevos--");
+                System.out.println("SERVIDOR PAUSADO...");
                 PrincipalServidor.arrancado = false;
                 break;
             case "10":
-                System.out.println("--Detener servicio--");
+                System.out.println("SERVIDOR DETENIDO");
                 PrincipalServidor.arrancado = false;
                 detenerEjecucion();
                 break;
