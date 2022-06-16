@@ -1,7 +1,11 @@
 package Servidor;
 
-
-
+import Servidor.Excepcion.AutoRetoException;
+import Servidor.Excepcion.GeneralError;
+import Servidor.Excepcion.LoginException;
+import Servidor.Excepcion.NotFoundException;
+import Servidor.Excepcion.PendingRetoException;
+import Servidor.Excepcion.RegistroException;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
