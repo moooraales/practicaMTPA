@@ -6,7 +6,7 @@ import java.net.Socket;
 public class PrincipalServidor {
     static boolean arrancado = true;
     public static void main(String[] args) throws Exception{
-        ServerSocket server = new ServerSocket(666);
+        ServerSocket server = new ServerSocket(2048);
         System.out.println("Servidor iniciado.");
         UsuarioDB.cargarUsuarios();
         MenuServidor mS = new MenuServidor();
