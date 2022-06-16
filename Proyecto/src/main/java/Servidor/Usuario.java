@@ -63,7 +63,7 @@ public class Usuario {
     }
 
     //Metodo para registrar clientes en el servidor
-    public static boolean registrar(String nombre, String password){
+    public static boolean registrar(String nombre, String password, int ganadas){
         return registrar(nombre,password,0);
     }
 
