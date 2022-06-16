@@ -52,7 +52,7 @@ public void menuOpcion(String opc){
             case "2":
                 System.out.println("--Usuarios conectados--");
                 alUsuario = Cliente.listarUsuariosLogueados();
-                imprimirUsuarios(alUsuario);
+                mostrarUsuarios(alUsuario);
                 break;
             case "3":
                 System.out.println("--Ver retos--");
@@ -69,11 +69,11 @@ public void menuOpcion(String opc){
                 break;
             case "6":
                 System.out.println("--Cargar usuarios--");
-                UsuarioDB.cargarUsuarios();
+                UsuarioDatosPersistentes.cargarUsuarios();
                 break;
             case "7":
                 System.out.println("--Guardar usuarios--");
-                UsuarioDB.guardarUsuarios();
+                UsuarioDatosPersistentes.guardarUsuarios();
                 break;
             case "8":
                 System.out.println("--Iniciar servicio--");
