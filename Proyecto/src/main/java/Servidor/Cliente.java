@@ -86,6 +86,15 @@ public static ArrayList<Usuario> listarUsuariosLogueados(){
     return listaUsuarios;
 }
 
+//Elimina los retos de un usuario y lo quita de clientes activos
+public void desconectar() throws IOException{
+    if(usuario!=null){
+        usuario.eliminarRetos();
+    }
+    this.getCliente().close();
+    listaClientesActivos.remove(this);
+}
+
 //Muestra los usuarios que han iniciado sesión, es decir, que están activos
 //Sirve para ver a qué usuarios se les puede retar
 public ArrayList<String> opcionListarUsuariosActivos(){
