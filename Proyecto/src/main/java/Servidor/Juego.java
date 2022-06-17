@@ -6,11 +6,9 @@ public class Juego {
     private opcionJuego opcionLocal;
     private opcionJuego opcionVisitante;
     private int tiempoJugada;   // En milisegundos
-    private Usuario usuarioInfectado;
-    private int contadorVirus;
 
     // Constructores
-    
+
     public Juego(Usuario local, Usuario visitante) {    
         this(local,visitante,null,null);
     }
@@ -20,22 +18,10 @@ public class Juego {
         this.visitante = visitante;
         this.opcionLocal = opcionLocal;
         this.opcionVisitante = opcionVisitante;
-        this.usuarioInfectado = null;
         this.tiempoJugada = 10000;
     }
 
     // Set & Get
-
-    public void setContadorVirus(int contadorVirus){
-        this.contadorVirus = contadorVirus;
-    }
-    public void setUsuarioInfectado(Usuario usuarioInfectado) {    
-        this.usuarioInfectado = usuarioInfectado;
-    }
-    
-    public Usuario getUsuarioInfectado() {
-        return usuarioInfectado;
-    }
 
     public void setOpcionLocal(opcionJuego opcionLocal) {
         this.opcionLocal = opcionLocal;
@@ -62,31 +48,24 @@ public class Juego {
     protected Usuario obtenerGanador(){
         Usuario ganador;
         int resultado;
-        if(usuarioInfectado!=null && contadorVirus>0){
-            if(usuarioInfectado.equals(local)){
-                ganador = visitante;
-            }else{
-                ganador = local;
-            }
-            contadorVirus--;
+
+        if(opcionLocal==null){
+            ganador = visitante;
+        }else if(opcionVisitante == null){
+            ganador = local;
         }else{
-            if(opcionLocal==null){
-                ganador = visitante;
-            }else if(opcionVisitante == null){
-                ganador = local;
-            }else{
-                resultado = opcionLocal.contra(opcionVisitante);
-                switch (resultado) {
-                    case 1:
-                        ganador = local;
-                        break;
-                    case -1:
-                        ganador = visitante;
-                        break;
-                    default:
-                        //Empate
-                        ganador = null;
-                        break;
+            resultado = opcionLocal.contra(opcionVisitante);
+            switch (resultado) {
+                case 1:
+                    ganador = local;
+                    break;
+                case -1:
+                    ganador = visitante;
+                    break;
+                default:
+                    //Empate
+                    ganador = null;
+                    break;
                 }
             }
         }
