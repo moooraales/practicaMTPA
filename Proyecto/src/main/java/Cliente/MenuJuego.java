@@ -53,6 +53,6 @@ public class MenuJuego {
                 System.out.println(marcador[i]);
             }
         }while(rondas!=0);
-        MenuOpcionJuego.rechazarReto(jugador);
+        Cliente.MenuOpcionJuego.rechazarReto(jugador);
     }
 }
