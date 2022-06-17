@@ -6,7 +6,7 @@ import java.awt.event.*;
 import java.util.LinkedList;
 
 
-public class Interfaz extends JFrame
+public class Interfaz extends JFrame implements Runnable
 {
 	//Atributos
 	Conecta4 con= new Conecta4(8,8);
@@ -291,6 +291,13 @@ public class Interfaz extends JFrame
 		Interfaz inter = new Interfaz();
 		
 			
+	}
+
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

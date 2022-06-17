@@ -6,13 +6,12 @@ public class Conecta4 implements Runnable {
 
         
     // tablero
-    // las celda (0,0) es la del v�rtice superior izquierdo)
     public Casilla[][] tablero;  // [fila][columna]
     private int numFil, numCol;
     public int jugador; //controla el turno del jugador siguiente
 
     /**
-     * Construye un tablero con el n�mero de filas y columnas indicado
+     * Construye un tablero con el numero de filas y columnas indicado
      * @param filas
      * @param columnas
      */
@@ -28,16 +27,16 @@ public class Conecta4 implements Runnable {
     }
 
     /**
-     * N�mero del filas del tablero
-     * @return n�mero de filas del tablero
+     * Numero del filas del tablero
+     * @return numero de filas del tablero
      */
     public int getNumFilas() {
         return numFil;
     }
 
     /**
-     * N�mero de columnas del tablero
-     * @return n�mero de columnas del tablero
+     * Numero de columnas del tablero
+     * @return numero de columnas del tablero
      */
     public int getNumColumnas() {
         return numCol;
