@@ -7,7 +7,7 @@ public class GuardaDatos extends Thread{
     }
 
     /*Con el objetivo de tener en todo momento los datos lo más actualizados posibles,
-     * hacemos que los datos de los usuarios se guarden cada 15 segundos */
+     * hacemos que los datos de los usuarios se guarden cada 15 segundos  */
     @Override
     public void run(){
         while(true){
