@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Interfaz",
+            "request": "launch",
+            "mainClass": "Cliente.Interfaces.Juego.Interfaz",
+            "projectName": "Proyecto"
+        },
+        {
+            "type": "php",
+            "request": "launch",
+            "name": "PHP 7.4.26",
+            "program": "${file}",
+            "runtimeExecutable": "C:/wamp64/bin/php/php7.4.26/php.exe"
+        }
+    ]
+}
