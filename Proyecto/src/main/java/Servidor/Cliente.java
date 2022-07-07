@@ -1,11 +1,11 @@
 package Servidor;
 
-import Servidor.Excepcion.AutoRetoException;
-import Servidor.Excepcion.GeneralError;
-import Servidor.Excepcion.LoginException;
-import Servidor.Excepcion.NotFoundException;
-import Servidor.Excepcion.PendingRetoException;
-import Servidor.Excepcion.RegistroException;
+import Servidor.selfRetoException;
+import Servidor.errorException;
+import Servidor.RegistroException;
+import Servidor.notFoundException;
+import Servidor.retoPendienteException;
+import Servidor.RegistroException;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -60,7 +60,7 @@ public ArrayList<String> opcionLogin(String[] solicitud){
         respuesta.add("true");
     }else{
         respuesta.add("false");
-        respuesta.add(new LoginException().toString());
+        respuesta.add(new inicioSesionException().toString());
     }
     return respuesta;
 }
@@ -109,7 +109,7 @@ public ArrayList<String> opcionListarUsuariosActivos(){
         }
     }else{
         respuesta.add("false");
-        respuesta.add(new NotFoundException().toString());
+        respuesta.add(new notFoundException().toString());
     }
     return respuesta;
 }
