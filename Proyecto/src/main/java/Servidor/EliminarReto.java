@@ -13,7 +13,7 @@ public class EliminarReto extends Thread{
 
         while(true){
             try{
-                Thread.sleep(millis: 5000);
+                Thread.sleep(5000);
                 eliminarElReto();
             }catch(InterruptedException ex){
                 System.out.println(ex.getMessage());
