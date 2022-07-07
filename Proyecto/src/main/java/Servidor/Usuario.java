@@ -2,7 +2,7 @@ package Servidor;
 
 import java.util.ArrayList;
 
-public class Usuario {
+public class Usuario{
 
     private static ArrayList<Usuario> listaUsuarios = new ArrayList<>();
     
