@@ -1,11 +1,5 @@
 package Servidor;
 
-import Servidor.selfRetoException;
-import Servidor.errorException;
-import Servidor.RegistroException;
-import Servidor.notFoundException;
-import Servidor.retoPendienteException;
-import Servidor.RegistroException;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
