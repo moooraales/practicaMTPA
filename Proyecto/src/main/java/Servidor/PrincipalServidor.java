@@ -10,7 +10,7 @@ public class PrincipalServidor {
         System.out.println("Servidor iniciado.");
         UsuarioDatosPersistentes.cargarUsuarios();
         MenuServidor mS = new MenuServidor();
-        OperacionesRecurrentes oR = new OperacionesRecurrentes();
+        GuardaryBorrar oR = new GuardaryBorrar();
         while(true){
             while(arrancado){
                 //System.out.println("DEBUG: Servidor en escucha");
