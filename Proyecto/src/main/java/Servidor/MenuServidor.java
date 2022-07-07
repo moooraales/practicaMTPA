@@ -1,6 +1,6 @@
 package Servidor;
 
-import Servidor.Excepcion.GeneralError;
+import Servidor.errorException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -120,7 +120,7 @@ public void detenerEjecucion(){
         try {
             alCliente.get(i).desconectar();
         } catch (IOException ex) {
-            System.out.println("LOG: "+new GeneralError().toString()+":"+ex.getMessage());
+            System.out.println("LOG: "+new errorException().toString()+":"+ex.getMessage());
         }
     }
 }
