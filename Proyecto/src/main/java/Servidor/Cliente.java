@@ -1,5 +1,7 @@
 package Servidor;
 
+import Servidor.inicioSesionException;
+import Servidor.notFoundException;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
