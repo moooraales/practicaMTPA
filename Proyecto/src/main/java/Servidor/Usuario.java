@@ -82,6 +82,18 @@ public class Usuario{
         return usuario;
     }
 
+    //Busca un reto del usuario que esta retando
+
+    public Reto buscarReto(Usuario retador){
+        Reto reto = null;
+        for(int i = 0; i < listaRetos.size();i++){
+            if(listaRetos.get(i).getLocal().equals(retador) || listaRetos.get(i).getVisitante().equals(retador)){
+                reto = listaRetos.get(i);
+            }
+        }
+        return reto;
+    }
+
     //Metodo para añadir los retos a los dos jugadores
     public boolean addReto(Usuario retador){
         boolean respuesta = false;
