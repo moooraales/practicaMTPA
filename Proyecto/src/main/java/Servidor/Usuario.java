@@ -78,7 +78,7 @@ public class Usuario{
             respuesta=Usuario.getListaUsuarios().add(new Usuario(nombre, password,partidasGanadas));
         }
         return respuesta;
-    }
+    }  
 
     //Metodo para que un usuario inicie sesion en el sistema
     public static Usuario login(String nombre, String password){
