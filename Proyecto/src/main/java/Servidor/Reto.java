@@ -40,7 +40,7 @@ public class Reto {
         this.sala = sala;
     }
     
-    public Sala getSala() {
+    public Sala getSala() { 
         return sala;
     }
     
