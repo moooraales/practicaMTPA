@@ -21,7 +21,7 @@ public class Juego {
         this.tiempoJugada = 10000;
     }
 
-    // Set & Get
+    // Setter y getter
 
     public void setOpcionLocal(opcionJuego opcionLocal) {
         this.opcionLocal = opcionLocal;
