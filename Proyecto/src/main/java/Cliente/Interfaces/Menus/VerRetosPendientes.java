@@ -27,13 +27,7 @@ public class VerRetosPendientes extends JFrame implements Runnable{
     JButton boton;
     ActionListener escuchador;
     JList lista;
-    /**
-    * Comprueba cual es el boton seleccionado y realiza la accion del mismo
-    * Volver
-    * @author Luis Enrique Muñoz
-    * @since 1.0
-    * @version 1.0
-    */
+   
     @Override
     public void run() {
         escuchador = (ActionEvent ae) -> {
@@ -50,12 +44,7 @@ public class VerRetosPendientes extends JFrame implements Runnable{
         iniciarComponentes();
         iniciarVentana();
     }
-    /**
-    * Ajustaria el frame y el flow layaut
-    * @author Luis Enrique Muñoz
-    * @since 1.0
-    * @version 1.0
-    */
+   
     public void ajustarVentana(){
         //Frame
         ventana = new JFrame("Lista de jugadores ");
@@ -64,12 +53,7 @@ public class VerRetosPendientes extends JFrame implements Runnable{
         layout = new FlowLayout(FlowLayout.CENTER, 20, 20);
         this.setLayout(layout);
     }
-    /**
-    * Iniciaria los componentes de la ventana
-    * @author Luis Enrique Muñoz
-    * @since 1.0
-    * @version 1.0
-    */
+   
     public void iniciarComponentes(){
         try {
             //Lista
@@ -104,24 +88,12 @@ public class VerRetosPendientes extends JFrame implements Runnable{
         etiqueta.setFont(new Font("Serif", Font.BOLD, 12));
         this.add(etiqueta);
     }
-    /**
-    * Iniciaria la ventana
-    * @author Luis Enrique Muñoz
-    * @since 1.0
-    * @version 1.0
-    */
+   
     public void iniciarVentana(){
         this.setSize(400, 200);
         this.setVisible(true);
     }
-    /**
-    * Generaria un DefaultListModel con los retos pendientes
-    * @author Luis Enrique Muñoz
-    * @return DefaultListModel con los usuarios activos 
-    * @throws java.io.IOException
-    * @since 1.0
-    * @version 1.0
-    */
+   
     public DefaultListModel dameRetosPendientes() throws IOException{
         Servidor servidor = Cliente.Servidor.getServidor();
         servidor.enviar("listarRetos;");

@@ -161,7 +161,7 @@ public class MenuOpcionJuego {
     }
    
     public static void jugarIU(String nombre){
-
+       
         
         EsperadorJuego es = new EsperadorJuego(nombre);
         EventQueue.invokeLater( new Cliente.Interfaces.Menus.MenuOpcionJuego());

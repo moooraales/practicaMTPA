@@ -27,13 +27,7 @@ public class RetarJugador extends JFrame implements Runnable {
     JFrame ventana;
     JButton boton;
     ActionListener escuchador;
-    /**
-    * Comprueba cual es el boton seleccionado y realiza la accion del mismo
-    * Jugar, volver
-    * @author Luis Enrique Muñoz
-    * @since 1.0
-    * @version 1.0
-    */
+    
     @Override
     public void run() {
         escuchador = (ActionEvent ae) -> {
@@ -66,12 +60,7 @@ public class RetarJugador extends JFrame implements Runnable {
         iniciarComponentes();
         iniciarVentana();
     } 
-    /**
-    * Ajustaria el frame y el flow layaut
-    * @author Luis Enrique Muñoz
-    * @since 1.0
-    * @version 1.0
-    */
+   
     public void ajustarVentana(){
         //Frame
         ventana = new JFrame(this.jugador);
@@ -80,12 +69,7 @@ public class RetarJugador extends JFrame implements Runnable {
         layout = new FlowLayout(FlowLayout.CENTER, 20, 20);
         this.setLayout(layout);
     }
-    /**
-    * Iniciaria los componentes de la ventana
-    * @author Luis Enrique Muñoz
-    * @since 1.0
-    * @version 1.0
-    */
+    
     public void iniciarComponentes(){
         //Texto
         usuario = new JTextField("#(nombre de usuario)");
@@ -111,12 +95,7 @@ public class RetarJugador extends JFrame implements Runnable {
         etiqueta2.setFont(new Font("Serif", Font.BOLD, 12));
         this.add(etiqueta2);
     }
-    /**
-    * Iniciaria la ventana
-    * @author Luis Enrique Muñoz
-    * @since 1.0
-    * @version 1.0
-    */
+   
     public void iniciarVentana(){
         this.setSize(400, 200);
         this.setVisible(true);

@@ -24,12 +24,7 @@ public class MenuInicial extends JFrame implements Runnable{
     JButton boton;
     ActionListener escuchador;
 
-    /**
-    * Inicia el menu de la interfaz del juego con las distintas opciones de inicio
-    * @author Luis Enrique Muñoz
-    * @since 1.0
-    * @version 1.0
-    */
+    
     @Override
     public void run() {
         escuchador = (ActionEvent ae) -> {
@@ -61,12 +56,7 @@ public class MenuInicial extends JFrame implements Runnable{
         iniciarComponentes();
         iniciarVentana();
     }
-    /**
-    * Ajustaria el frame y el flow layaut
-    * @author Luis Enrique Muñoz
-    * @since 1.0
-    * @version 1.0
-    */
+  
     public void ajustarVentana(){
         //Frame
         ventana = new JFrame("Bienvenido");
@@ -75,12 +65,7 @@ public class MenuInicial extends JFrame implements Runnable{
         layout = new FlowLayout(FlowLayout.CENTER, 20, 20);
         this.setLayout(layout);
     }
-    /**
-    * Iniciaria los componentes de la ventana
-    * @author Luis Enrique Muñoz
-    * @since 1.0
-    * @version 1.0
-    */
+   
     public void iniciarComponentes(){
         //Botones
         String titulosBotones[] = {"Login", "Registro", "Salir"};
@@ -97,12 +82,7 @@ public class MenuInicial extends JFrame implements Runnable{
         etiqueta.setFont(new Font("Serif", Font.BOLD, 12));
         this.add(etiqueta);
     }
-    /**
-    * Iniciaria la ventana
-    * @author Luis Enrique Muñoz
-    * @since 1.0
-    * @version 1.0
-    */
+   
     public void iniciarVentana(){
         this.setSize(400, 200);
         this.setVisible(true);

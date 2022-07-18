@@ -24,13 +24,7 @@ public class Registro extends JFrame implements Runnable {
     JFrame ventana;
     JButton boton;
     ActionListener escuchador;
-    /**
-    * Comprueba cual es el boton seleccionado y realiza la accion del mismo
-    * Registro
-    * @author Luis Enrique Muñoz
-    * @since 1.0
-    * @version 1.0
-    */
+    
     @Override
     public void run() {
         escuchador = (ActionEvent ae) -> {
