@@ -106,6 +106,17 @@ public class Usuario{
         return respuesta;
     }
 
+    //Busca a un usuario en una lista
+    public static Usuario buscarUsuario(String nombre, ArrayList<Usuario> lista){
+        Usuario usuario = null;
+        for(int i = 0; i<lista.size();i++){
+            if(lista.get(i).getNombre().equals(nombre)){
+                usuario = lista.get(i);
+            }
+        }
+        return usuario;
+    }
+
     //Metodo que busca a un usuario en el sistema
     public static Usuario buscarUsuario(String nombre){
         return buscarUsuario(nombre, getListaUsuarios());
