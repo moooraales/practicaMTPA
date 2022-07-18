@@ -32,10 +32,10 @@ public class testUsuario {
     @Test
     public void testGetNombre() {
         System.out.println("getNombre");
-        String expResult = "#pedrito";
-        String result = usuario1.getNombre();
-        assertEquals(expResult, result);
-        if(!expResult.equals(result)){
+        String expResultado = "#pedrito";
+        String resultado = usuario1.getNombre();
+        assertEquals(expResultado, resultado);
+        if(!expResultado.equals(resultado)){
             fail("Error en el test");
         }
     }
@@ -44,10 +44,10 @@ public class testUsuario {
     @Test
     public void testGetPassword() {
         System.out.println("getPassword");
-        String expResult = "password321";
-        String result = usuario1.getPassword();
-        assertEquals(expResult, result);
-        if(!expResult.equals(result)){
+        String expResultado = "password321";
+        String resultado = usuario1.getPassword();
+        assertEquals(expResultado, resultado);
+        if(!expResultado.equals(resultado)){
             fail("Error en el test");
         }
     }
@@ -57,12 +57,12 @@ public class testUsuario {
     @Test
     public void testSetPartidasGanadas() {
         System.out.println("setPartidasGanadas");
-        int expResult = 3;
-        usuario1.setPartidasGanadas(expResult);
-        int result = usuario1.getPartidasGanadas();
-        assertEquals(expResult, result);
-        if(expResult!=result){
-            fail("Test Fallido");
+        int expResultado = 3;
+        usuario1.setPartidasGanadas(expResultado);
+        int resultado = usuario1.getPartidasGanadas();
+        assertEquals(expResultado, resultado);
+        if(expResultado!=resultado){
+            fail("Error en el test");
         }
     }
 
@@ -70,11 +70,11 @@ public class testUsuario {
     @Test
     public void testGetPartidasGanadas() {
         System.out.println("getPartidasGanadas");
-        int expResult = 10;
-        int result = usuario1.getPartidasGanadas();
-        assertEquals(expResult, result);
-        if(expResult!=result){
-            fail("Test Fallido");
+        int expResultado = 10;
+        int resultado = usuario1.getPartidasGanadas();
+        assertEquals(expResultado, resultado);
+        if(expResultado!=resultado){
+            fail("Error en el test");
         }
     }
 
@@ -82,12 +82,12 @@ public class testUsuario {
     @Test
     public void testGetListaRetos() {
         System.out.println("getListaRetos");
-        ArrayList<Reto> expResult = new ArrayList<>();
-        expResult.add(reto);
-        ArrayList<Reto> result = usuario1.getListaRetos();
-        assertEquals(expResult, result);
-        if(!expResult.equals(result)){
-            fail("Test Fallido");
+        ArrayList<Reto> expResultado = new ArrayList<>();
+        expResultado.add(reto);
+        ArrayList<Reto> resultado = usuario1.getListaRetos();
+        assertEquals(expResultado, resultado);
+        if(!expResultado.equals(resultado)){
+            fail("Error en el test");
         }
     }
 
@@ -95,13 +95,13 @@ public class testUsuario {
     @Test
     public void testGetListaUsuarios() {
         System.out.println("getListaUsuarios");
-        ArrayList<Usuario> expResult = new ArrayList<>();
-        expResult.add(usuario1);
-        expResult.add(usuario2);
-        ArrayList<Usuario> result = Usuario.getListaUsuarios();
-        assertEquals(expResult, result);
-        if(!expResult.equals(result)){
-            fail("Test Fallido");
+        ArrayList<Usuario> expResultado = new ArrayList<>();
+        expResultado.add(usuario1);
+        expResultado.add(usuario2);
+        ArrayList<Usuario> resultado = Usuario.getListaUsuarios();
+        assertEquals(expResultado, resultado);
+        if(!expResultado.equals(resultado)){
+            fail("Error en el test");
         }
     }
 
@@ -109,13 +109,13 @@ public class testUsuario {
     @Test
     public void testSetListaUsuarios() {
         System.out.println("setListaUsuarios");
-        ArrayList<Usuario> expResult = new ArrayList<>();
-        expResult.add(usuario1);
-        Usuario.setListaUsuarios(expResult);
-        ArrayList<Usuario> result = Usuario.getListaUsuarios();
-        assertEquals(expResult, result);
-        if(!expResult.equals(result)){
-            fail("Test Fallido");
+        ArrayList<Usuario> expResultado = new ArrayList<>();
+        expResultado.add(usuario1);
+        Usuario.setListaUsuarios(expResultado);
+        ArrayList<Usuario> resultado = Usuario.getListaUsuarios();
+        assertEquals(expResultado, resultado);
+        if(!expResultado.equals(resultado)){
+            fail("Error en el test");
         }
     }
 
@@ -123,12 +123,12 @@ public class testUsuario {
     @Test
     public void testAddPartidasGanadas() {
         System.out.println("addPartidasGanadas");
-        int expResult = 1;
+        int expResultado = 1;
         usuario1.addPartidasGanadas();
-        int result = usuario1.getPartidasGanadas();
-        assertEquals(expResult, result);
-        if(expResult!=result){
-            fail("Test Fallido");
+        int resultado = usuario1.getPartidasGanadas();
+        assertEquals(expResultado, resultado);
+        if(expResultado!=resultado){
+            fail("Error en el test");
         }
     }
     
