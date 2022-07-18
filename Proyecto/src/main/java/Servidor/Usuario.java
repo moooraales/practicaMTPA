@@ -63,8 +63,21 @@ public class Usuario{
     }
 
     //Metodo para registrar clientes en el servidor
-    public static boolean registrar(String nombre, String password, int ganadas){
+    public static boolean registrar(String nombre, String password){
         return registrar(nombre,password,0);
+    }
+
+    public static boolean registrar(String nombre, String password, int partidasGanadas){
+        boolean respuesta;
+        if(buscarUsuario(nombre)!=null || 
+                nombre.length()<2 || 
+                !nombre.replaceAll("\\s","").equals(nombre) ||
+                partidasGanadas<0){
+            respuesta=false;
+        }else{
+            respuesta=Usuario.getListaUsuarios().add(new Usuario(nombre, password,partidasGanadas));
+        }
+        return respuesta;
     }
 
     //Metodo para que un usuario inicie sesion en el sistema
