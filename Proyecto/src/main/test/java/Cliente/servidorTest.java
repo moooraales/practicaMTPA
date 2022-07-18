@@ -13,7 +13,7 @@ public class UsuarioTest {
     public UsuarioTest(){
         }
     
-    
+    //Declaramos lso datos necesarios para los test
     @BeforeEach
     public void setUp() {
         usuario1 = new Usuario("#pedrito","password321",3);
