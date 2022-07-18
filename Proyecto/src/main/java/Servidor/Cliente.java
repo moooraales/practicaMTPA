@@ -169,7 +169,7 @@ public ArrayList<String> opcionRegistrar(String[] solicitud){
                         respuesta=opcionResponderReto(solicitud);
                         enviar(respuesta);
                         break;
-                    case "jugar":
+                    /* case "jugar":
                         respuesta=opcionJugar(solicitud);
                         enviar(respuesta);
                         break;
@@ -180,7 +180,7 @@ public ArrayList<String> opcionRegistrar(String[] solicitud){
                     case "rondasRestantes":
                         respuesta=opcionRondasRestantes(solicitud);
                         enviar(respuesta);
-                        break;
+                        break; */
                     case "verRanking":
                         respuesta=opcionVerRanking();
                         enviar(respuesta);
@@ -188,19 +188,19 @@ public ArrayList<String> opcionRegistrar(String[] solicitud){
                }
             }
             
-        } catch(IOException | InterruptedException ex){
-            if(ex.getMessage().equals("Connection reset")){
-                System.out.println("LOG: Conexion perdida con el cliente.");
-            }else if(ex.getMessage().equals("Socket closed")){
-                System.out.println("LOG: Conexion con el cliente finalizada.");
+        } catch(IOException ex){
+            if(ex.getMessage().equals("Conexion reseteada")){
+                System.out.println("Conexion perdida con el cliente");
+            }else if(ex.getMessage().equals("Socket cerrado")){
+                System.out.println("Conexion finalizada con el cliente");
             }else{
-                System.out.println("LOG: "+new GeneralError().toString()+ex.getMessage());
+                System.out.println("LOG: "+new errorException().toString()+ex.getMessage());
             }
         }
         try {
             this.desconectar();
         } catch (IOException ex) {
-            System.out.println("LOG: "+new GeneralError().toString()+":"+ex.getMessage());
+            System.out.println("LOG: "+new errorException().toString()+":"+ex.getMessage());
         }
         
     }
@@ -224,6 +224,126 @@ public ArrayList<String> opcionListarUsuariosActivos(){
     return respuesta;
 }
 
+
+//Metodo para retar a otro jugador
+public ArrayList<String> opcionRetarJugador(String[] solicitud) throws IOException{
+    ArrayList<String> respuesta = new ArrayList<>();
+    Cliente clienteRival = buscarClienteLogueado(solicitud[1]);
+    if(clienteRival!=null){
+        if(clienteRival.getCliente().equals(this.getCliente())){
+            respuesta.add("false");
+            respuesta.add(new selfRetoException().toString());
+        }else{
+            if(clienteRival.getUsuario().addReto(this.getUsuario())==true){
+                respuesta.add("true");
+            }else{
+                respuesta.add("false");
+                respuesta.add(new selfRetoException().toString());
+            }
+        }
+    }else{
+       respuesta.add("false");
+       respuesta.add(new notFoundException().toString());
+    }
+    return respuesta;
+}
+
+//Metodo para listar los retos existentes
+public ArrayList<String> opcionListarRetos() throws IOException{
+    ArrayList<String> respuesta = new ArrayList<>();
+    Reto reto;
+    if(this.getUsuario().getListaRetos().isEmpty()){
+        respuesta.add("false");
+        respuesta.add(new notFoundException().toString());
+    }else{
+        respuesta.add("true");
+        for(int i=0;i<this.getUsuario().getListaRetos().size();i++){
+            reto = this.getUsuario().getListaRetos().get(i);
+            if(reto.getLocal().equals(this.getUsuario())){
+                respuesta.add(reto.getVisitante().getNombre());
+            }else{
+                respuesta.add(reto.getLocal().getNombre());
+            }
+            respuesta.add(this.getUsuario().getListaRetos().get(i).getEstado().toString());
+        }
+    }
+    return respuesta;
+}
+
+//Metodo para responder a un reto pendiente
+public ArrayList<String> opcionResponderReto(String[] solicitud) throws IOException{
+    ArrayList<String> respuesta = new ArrayList<>();
+    Cliente rival = Cliente.buscarClienteLogueado(solicitud[1]);
+    if(rival!=null){
+        Reto reto = this.getUsuario().buscarReto(rival.getUsuario());
+        if(this.getUsuario().equals(reto.getVisitante())){
+            respuesta.add("true");
+            if(solicitud[2].equals("true")){
+                reto.setEstado(estadoReto.Aceptado);
+            }else{
+                reto.eliminar();
+            }
+        }else{
+            respuesta.add("false");
+            respuesta.add("No puedes responder a tu propio reto");
+        }
+    }else{
+        respuesta.add("false");
+        respuesta.add("El usuario no esta disponible");
+    }
+    return respuesta;
+}
+
+//IMPORTANTE: me esta dando error buscarReto, me dice que no se le puede meter un String pero no entiendo por que
+//Metodo para actualizar el marcador
+/* public ArrayList<String> opcionActualizarMarcador(String[] solicitud) throws IOException{
+    ArrayList<String> respuesta = new ArrayList<>();
+    Reto reto = this.getUsuario().buscarReto(solicitud[1]);
+    if(reto == null){
+        respuesta.add("false");
+        respuesta.add(new notFoundException().toString());
+    }else{
+        respuesta.add("true");
+        respuesta.add(String.valueOf(reto.getSala().getPuntosLocal()));
+        respuesta.add(String.valueOf(reto.getSala().getPuntosVisitante()));
+    }
+    return respuesta;
+} */
+
+//Metodo para ver las rondas restantes
+/* public ArrayList<String> opcionRondasRestantes(String[] solicitud) throws IOException{
+    ArrayList<String> respuesta = new ArrayList<>();
+    Reto reto = this.getUsuario().buscarReto(solicitud[1]);
+    int jugadas,restantes;
+    
+    if(reto == null){
+        respuesta.add("false");
+        respuesta.add(new notFoundException().toString());
+    }else{
+        jugadas = reto.getSala().getPuntosLocal() + reto.getSala().getPuntosVisitante();
+        restantes = reto.getSala().getRondas() - jugadas;
+        respuesta.add("true");
+        respuesta.add(String.valueOf(restantes));
+    }
+    return respuesta;
+} */
+
+//Metodo para mostrar el ranking al cliente
+public ArrayList<String> opcionVerRanking(){
+    ArrayList<String> respuesta = new ArrayList<>();
+    ArrayList<Usuario> usuarios = Ranking.getRanking().getUsuarios();
+    if(usuarios.size()>0){
+        respuesta.add("true");
+        for(int i=0;i<usuarios.size();i++){
+            respuesta.add(usuarios.get(i).getNombre());
+            respuesta.add(String.valueOf(usuarios.get(i).getPartidasGanadas()));
+        }
+    }else{
+        respuesta.add("false");
+        respuesta.add("No hay datos disponibles");
+    }
+    return respuesta;
+}
 
     
 }
