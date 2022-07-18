@@ -47,6 +47,17 @@ public void setUsuario(Usuario usuario) {
     this.usuario = usuario;
 }
 
+public static Cliente buscarClienteLogueado(String nombreUsuario){
+    ArrayList<Cliente> listaClientes = listarClientesLogueados();
+    Cliente resultado = null;
+    for(int i = 0 ; i < listaClientes.size() ; i++){
+        if(listaClientes.get(i).getUsuario().getNombre().equals(nombreUsuario)){
+            resultado = listaClientes.get(i);
+        }
+    }
+    return resultado;
+}
+
 //Permite que el usuario inicie sesion en el sistema
 public ArrayList<String> opcionLogin(String[] solicitud){
     ArrayList<String> respuesta = new ArrayList<>();
