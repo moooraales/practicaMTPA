@@ -30,7 +30,7 @@ public class Ranking {
     //Metodo que actualiza los valores del ranking, ordenando por partidas ganadas
     public void actualizar(){
         ArrayList<Usuario> usuariosBD = Usuario.getListaUsuarios();
-        usuariosBD.sort(new partidasSorter());
+        usuariosBD.sort(new comparadorUsuarios());
         usuarios.clear();
         for(int i=0;i<usuariosBD.size() && i<nUsuarios;i++){
             usuarios.add(usuariosBD.get(i));
