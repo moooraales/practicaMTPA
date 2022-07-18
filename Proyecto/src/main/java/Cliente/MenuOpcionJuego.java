@@ -7,15 +7,7 @@ import java.io.InputStreamReader;
 
 public class MenuOpcionJuego {
     static BufferedReader teclado = new BufferedReader(new InputStreamReader(System.in));
-    /**
-    * Genera un menu para poder seleccionar las distintas opciones que podemos
-    * hacer una vez logueados:
-    * Retar jugador {@link Cliente.MenuOpcionJuego#retarJugador() }
-    * Listar jugadores disponibles {@link Cliente.MenuOpcionJuego#listarUsuariosActivos()}
-    * Ver ranking {@link Cliente.MenuOpcionJuego#verRanking()}
-    * Comprobar retos {@link Cliente.MenuOpcionJuego#comprobarRetos() }
-    * @throws java.io.IOException
-    */
+    
     public static void menuOpcionJuego() throws IOException{
         String opcion;
         do{
@@ -44,13 +36,7 @@ public class MenuOpcionJuego {
             }
         }while(!"0".equals(opcion));
     }
-    /**
-    * Pide las credenciales para retar a un jugador junto a una comprobacion,
-    * si la comprobacion es negativa manda un mensaje de error, si no
-    * llama a {@link Cliente.MenuOpcionJuego#enviarReto(java.lang.String) }
-    * {@link Cliente.MenuOpcionJuego#menuOpcionJuego()}}
-    * @throws IOException
-    */
+    
     public static void retarJugador() throws IOException{
         System.out.println("Escribe el nombre del jugador a retar:");
         String jugador = teclado.readLine();
@@ -61,12 +47,7 @@ public class MenuOpcionJuego {
             System.out.println("El formato del nombre es incorrecto.\n");
         }  
     }
-    /**
-    * Llamaria a {@link Cliente.Servidor#listarUsuariosActivos() } y si la
-    * respuesta es afirmativa les permite al usuario elegir un jugador al que
-    * retar llamando a {@link Cliente.MenuOpcionJuego#retarJugador() }
-    * @throws IOException
-    */
+   
     public static void listarUsuariosActivos() throws IOException{
         String [] cadena;
         Servidor servidor = Servidor.getServidor();
@@ -86,12 +67,7 @@ public class MenuOpcionJuego {
             System.out.println(cadena[1]);
         }
     }
-    /**
-    * Llamaria a {@link Cliente.Servidor#verRanking() } y si la
-    * respuesta es afirmativa mostraria el ranking, si no mostraria el error
-    * mandado por el servidor
-    * @throws IOException
-    */
+   
     public static void verRanking() throws IOException{
         String [] cadena;
         Servidor servidor = Servidor.getServidor();
@@ -105,15 +81,7 @@ public class MenuOpcionJuego {
             System.out.println(cadena[1]);
         }
     }
-    /**
-    * Llamaria a {@link Cliente.Servidor#enviar(java.lang.String)} y si la
-    * respuesta es afirmativa mostraria los retos del jugador y se le daria la
-    * opcion de aceptar los retos añadiendo el nombre del jugador y llamando a 
-    * {@link Cliente.MenuOpcionJuego#aceptarReto(java.lang.String)  }, si no le
-    * daria la opcion de rechazar un reto añadiendo el nombre del jugador y llamando a 
-    * {@link Cliente.MenuOpcionJuego#rechazarReto(java.lang.String)  }
-    * @throws IOException
-    */
+   
     public static void comprobarRetos() throws IOException{
         Servidor servidor = Servidor.getServidor();
         String [] respuesta;
@@ -155,15 +123,7 @@ public class MenuOpcionJuego {
             System.out.println(respuesta[1]);
         }
     }
-    /**
-    * Llamaria a {@link Cliente.Servidor#responderReto(java.lang.String, java.lang.String)} 
-    * y si la respuesta es afirmativa mostraria llamaria a 
-    * {@link Cliente.MenuOpcionJuego#jugarIU(java.lang.String)}, si no mostraria 
-    * el error mandado por el servidor
-    * @param nombre
-    * @return String[]
-    * @throws IOException
-    */
+  
     public static String[] aceptarReto(String nombre) throws IOException{
         Servidor servidor = Servidor.getServidor();
         String [] respuesta;
@@ -177,14 +137,7 @@ public class MenuOpcionJuego {
         }
         return respuesta;
     }
-    /**
-    * Llamaria a 
-    * {@link Cliente.Servidor#responderReto(java.lang.String, java.lang.String)} 
-    * y devolveria la respuesta
-    * @param nombre
-    * @return String[]
-    * @throws IOException
-    */
+   
     public static String[] rechazarReto(String nombre) throws IOException{
         Servidor servidor = Servidor.getServidor();
         String [] respuesta;
@@ -192,15 +145,7 @@ public class MenuOpcionJuego {
         respuesta = servidor.recibir();
         return respuesta;
     }
-    /**
-    * Llamaria a 
-    * {@link Cliente.Servidor#retarJugador(java.lang.String) }, si la respuesta
-    * es positiva llamaria a {@link Cliente.MenuOpcionJuego#jugarIU(java.lang.String)}, 
-    * si no mostraria el error mandado por el servidor
-    * @param nombre
-    * @return String[]
-    * @throws IOException
-    */
+ 
     public static String[] enviarReto(String nombre) throws IOException{
         Servidor servidor = Servidor.getServidor();
         String [] respuesta;
@@ -214,26 +159,15 @@ public class MenuOpcionJuego {
         }
         return respuesta;
     }
-    /**
-    * Generaria un nuevo evento de invocacion de la interfaz {@link 
-    * EventQueue.invokeLater(new Cliente.interfaces.MenuJuego());} añadiendo
-    * antes el nombre al JLabel usuario
-    * @param nombre
-    */
+   
     public static void jugarIU(String nombre){
-        //Cliente.Interfaces.MenuJuego.usuario.setText(nombre);
+
         
         EsperadorJuego es = new EsperadorJuego(nombre);
         EventQueue.invokeLater( new Cliente.Interfaces.Menus.MenuOpcionJuego());
         
     }
-    /**
-    * Llamaria a {@link  Cliente.MenuJuego#menuJuego(java.lang.String) }
-    * @author Luis Enrique Muñoz
-    * @param nombre
-    * @since 1.0
-    * @version 1.0 
-    */
+  
     public static void jugarConsola(String nombre) throws IOException{
         MenuJuego.menuJuego(nombre);
     }
